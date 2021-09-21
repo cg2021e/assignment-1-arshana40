@@ -5,7 +5,7 @@
 ## ^Front View 
 
 ![Top Right view](https://github.com/cg2021e/assignment-1-arshana40/blob/main/Jelly/Jelly_Rear.png) 
-## ^Top RIght View 
+## ^Top Right View 
 
 ![Top Left view](https://github.com/cg2021e/assignment-1-arshana40/blob/main/Jelly/Jelly_Left.png) 
 ## ^Top Left View 
