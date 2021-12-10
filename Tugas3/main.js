@@ -182,86 +182,59 @@ function main() {
     gl.uniform3fv(uViewerPosition, camera);
 
     // Apply some interaction using mouse
-    var lastPointOnTrackBall, currentPointOnTrackBall;
-    var lastQuat = glMatrix.quat.create();
-    function computeCurrentQuat() {
-        // Secara berkala hitung quaternion rotasi setiap ada perubahan posisi titik pointer mouse
-        var axisFromCrossProduct = glMatrix.vec3.cross(glMatrix.vec3.create(), lastPointOnTrackBall, currentPointOnTrackBall);
-        var angleFromDotProduct = Math.acos(glMatrix.vec3.dot(lastPointOnTrackBall, currentPointOnTrackBall));
-        var rotationQuat = glMatrix.quat.setAxisAngle(glMatrix.quat.create(), axisFromCrossProduct, angleFromDotProduct);
-        glMatrix.quat.normalize(rotationQuat, rotationQuat);
-        return glMatrix.quat.multiply(glMatrix.quat.create(), rotationQuat, lastQuat);
-    }
+//    var lastPointOnTrackBall, currentPointOnTrackBall;
+//    var lastQuat = glMatrix.quat.create();
+ //   function computeCurrentQuat() {
+ //       // Secara berkala hitung quaternion rotasi setiap ada perubahan posisi titik pointer mouse
+ //       var axisFromCrossProduct = glMatrix.vec3.cross(glMatrix.vec3.create(), lastPointOnTrackBall, currentPointOnTrackBall);
+ //       var angleFromDotProduct = Math.acos(glMatrix.vec3.dot(lastPointOnTrackBall, currentPointOnTrackBall));
+ //       var rotationQuat = glMatrix.quat.setAxisAngle(glMatrix.quat.create(), axisFromCrossProduct, angleFromDotProduct);
+ //       glMatrix.quat.normalize(rotationQuat, rotationQuat);
+ //       return glMatrix.quat.multiply(glMatrix.quat.create(), rotationQuat, lastQuat);
+ //   }
     // Memproyeksikan pointer mouse agar jatuh ke permukaan ke virtual trackball
-    function getProjectionPointOnSurface(point) {
-        var radius = canvas.width/3;  // Jari-jari virtual trackball kita tentukan sebesar 1/3 lebar kanvas
-        var center = glMatrix.vec3.fromValues(canvas.width/2, canvas.height/2, 0);  // Titik tengah virtual trackball
-        var pointVector = glMatrix.vec3.subtract(glMatrix.vec3.create(), point, center);
-        pointVector[1] = pointVector[1] * (-1); // Flip nilai y, karena koordinat piksel makin ke bawah makin besar
-        var radius2 = radius * radius;
-        var length2 = pointVector[0] * pointVector[0] + pointVector[1] * pointVector[1];
-        if (length2 <= radius2) pointVector[2] = Math.sqrt(radius2 - length2); // Dapatkan nilai z melalui rumus Pytagoras
-        else {  // Atur nilai z sebagai 0, lalu x dan y sebagai paduan Pytagoras yang membentuk sisi miring sepanjang radius
-            pointVector[0] *= radius / Math.sqrt(length2);
-            pointVector[1] *= radius / Math.sqrt(length2);
-            pointVector[2] = 0;
-        }
-        return glMatrix.vec3.normalize(glMatrix.vec3.create(), pointVector);
-    }
+ //   function getProjectionPointOnSurface(point) {
+ //       var radius = canvas.width/3;  // Jari-jari virtual trackball kita tentukan sebesar 1/3 lebar kanvas
+ //       var center = glMatrix.vec3.fromValues(canvas.width/2, canvas.height/2, 0);  // Titik tengah virtual trackball
+ //       var pointVector = glMatrix.vec3.subtract(glMatrix.vec3.create(), point, center);
+ //       pointVector[1] = pointVector[1] * (-1); // Flip nilai y, karena koordinat piksel makin ke bawah makin besar
+ //       var radius2 = radius * radius;
+ //       var length2 = pointVector[0] * pointVector[0] + pointVector[1] * pointVector[1];
+ //       if (length2 <= radius2) pointVector[2] = Math.sqrt(radius2 - length2); // Dapatkan nilai z melalui rumus Pytagoras
+ //       else {  // Atur nilai z sebagai 0, lalu x dan y sebagai paduan Pytagoras yang membentuk sisi miring sepanjang radius
+ //           pointVector[0] *= radius / Math.sqrt(length2);
+ //           pointVector[1] *= radius / Math.sqrt(length2);
+ //           pointVector[2] = 0;
+ //       }
+ //       return glMatrix.vec3.normalize(glMatrix.vec3.create(), pointVector);
+ //   }
 
     var dragging, rotation = glMatrix.mat4.create();
     function onMouseDown(event) {
-        
+        //dihapus di tugas sebelumnya karena tidak dipakai
     }
     function onMouseUp(event) {
-        
+        //dihapus di tugas sebelumnya karena tidak dipakai
     }
     function onMouseMove(event) {
-        
+        //dihapus di tugas sebelumnya karena tidak dipakai
     }
-    document.addEventListener("mousedown", onMouseDown, false);
-    document.addEventListener("mouseup", onMouseUp, false);
-    document.addEventListener("mousemove", onMouseMove, false);
+    //dijadikan komen karena tidak dipakai
+   // document.addEventListener("mousedown", onMouseDown, false);
+   // document.addEventListener("mouseup", onMouseUp, false);
+   // document.addEventListener("mousemove", onMouseMove, false);
 
     // Apply some interaction using keyboard
 
     function onKeydown(event) {
-        //65 = a
-        //68 = d
-        //87 = w
-        //83 = s
-        if (event.keyCode == 87) /*something */{
-            lpos[1]+=1/6;
-        } ;
-        if (event.keyCode == 83) /*something */{
-            lpos[1]-=1/6;
-             } ;
-        if (event.keyCode == 65) /*something */{
-            camera[0]-=1/6;
-            glMatrix.mat4.lookAt(
-               view,
-              camera,      // camera position
-              [camera[0], 0, 0],      // the point where camera looks at
-              [0, 1, 0]       // up vector of the camera
-             );
-            gl.uniformMatrix4fv(uView, false, view);
-        } ;
-        if (event.keyCode == 68) /*something */{
-            camera[0]+=1/6;
-            glMatrix.mat4.lookAt(
-               view,
-              camera,      // camera position
-              [camera[0], 0, 0],      // the point where camera looks at
-              [0, 1, 0]       // up vector of the camera
-             );
-            gl.uniformMatrix4fv(uView, false, view);
-        } ;
+        //dihapus
     }
     function onKeyup(event) {
-        
+        //kosong
     }
-    document.addEventListener("keydown", onKeydown, false);
-    document.addEventListener("keyup", onKeyup, false);
+    //dijadikan komen
+    //document.addEventListener("keydown", onKeydown, false);
+    //document.addEventListener("keyup", onKeyup, false);
 
     function render() {
         // Init the model matrix
