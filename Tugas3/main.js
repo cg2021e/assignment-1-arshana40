@@ -11,11 +11,11 @@ function main() {
     // Define vertices data consisting of position and color properties
 
     var vertices = [
-        ...jbox,...jbox2,...box,
+        ...jbox,...jbox2,...box,...plane,
     ];
 
     var indices = [
-        ...indice1,...indice2,...indice3
+        ...indice1,...indice2,...indice3,...indice4,
     ];
 
     // Create a linked-list for storing the vertices data
@@ -158,7 +158,7 @@ function main() {
 
     // Set the view matrix in the vertex shader
     var view = glMatrix.mat4.create();
-    var camera = [0, 0, 9];
+    var camera = [0, 1, 9];
     glMatrix.mat4.lookAt(
         view,
         camera,      // camera position
@@ -171,7 +171,7 @@ function main() {
     var uLightConstant = gl.getUniformLocation(shaderProgram, "uLightConstant");
     var uAmbientIntensity = gl.getUniformLocation(shaderProgram, "uAmbientIntensity");
     gl.uniform3fv(uLightConstant, [1, 1, 1]);   // white(?)
-    gl.uniform1f(uAmbientIntensity, 0.313) // 
+    gl.uniform1f(uAmbientIntensity, 1) // 
     // var uLightDirection = gl.getUniformLocation(shaderProgram, "uLightDirection");
     // gl.uniform3fv(uLightDirection, [2.0, 0.0, 0.0]);    // light comes from the right side
     var uLightPosition = gl.getUniformLocation(shaderProgram, "uLightPosition");
